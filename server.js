@@ -24,6 +24,12 @@ app.use(cors({
     credentials: true,
 }));
 
+// CSP Header Update 
+app.use((req, res, next) => { 
+    res.setHeader("Content-Security-Policy", "default-src 'self'; connect-src 'self' http://localhost:3000"); 
+    next(); 
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB connection
