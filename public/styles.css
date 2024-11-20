@@ -1,0 +1,159 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #006747, #A7C5A2); /* Starbucks Green gradient */
+    color: #333; /* Dark gray text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    margin: 0;
+    padding: 0;
+}
+
+/* Form container styles */
+#forms {
+    background: linear-gradient(145deg, #ffffff, #f4f4f4); /* Light gradient with white */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+    padding: 40px;
+    width: 350px;
+    border: 1px solid #e0e0e0; /* Light border */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Form container hover effect */
+#forms:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Heading styles */
+h3 {
+    text-align: center;
+    color: #006747; /* Starbucks Green */
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Label styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Input styles */
+input[type="email"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #f7f7f7, #ffffff); /* Light gradient background */
+    transition: background 0.3s ease, border 0.3s ease; /* Smooth background and border change */
+}
+
+/* Input hover and focus styles */
+input[type="email"]:hover,
+input[type="email"]:focus {
+    background: linear-gradient(135deg, #e8f2e1, #ffffff); /* Lighter green on hover/focus */
+    border: 2px solid #006747; /* Starbucks Green border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #006747, #A7C5A2); /* Starbucks Green gradient */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+    background: linear-gradient(135deg, #004d35, #8fa88a); /* Darker green gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Button active effect */
+button:active {
+    transform: translateY(1px); /* Slight push-down effect on click */
+}
+
+/* Form message styles */
+.form-message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Error message color */
+.form-message.error {
+    color: red;
+}
+
+/* Success message color */
+.form-message.success {
+    color: #4CAF50; /* Green for success message */
+}
+/* Styling for the "Go Back Home" link */
+a.back-home {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #006747, #A7C5A2); /* Match button style */
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the "Go Back Home" link */
+a.back-home:hover {
+    background: linear-gradient(135deg, #004d35, #8fa88a); /* Darker gradient */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Active state for the "Go Back Home" link */
+a.back-home:active {
+    transform: translateY(1px); /* Slight push-down effect on click */
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    #forms {
+        width: 90%; /* Full width on smaller screens */
+        padding: 20px; /* Less padding for smaller screens */
+    }
+
+    h3 {
+        font-size: 24px; /* Adjust heading size */
+    }
+
+    input[type="email"] {
+        font-size: 14px; /* Smaller font size on mobile */
+    }
+
+    button {
+        font-size: 14px; /* Smaller button font on mobile */
+    }
+}

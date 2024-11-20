@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn - Hello Grade Student Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <form id="loginForm" action="/login" method="post" class="form-con">
+            <h3>Login</h3>
+            <label for="email">Email</label>
+            <input type="email" placeholder="Email" id="email" name="email" required>
+            <div id="emailError" class="error-message"></div>
+            <label for="password">Password</label>
+            <div class="password-toggle">
+                <input type="password" placeholder="Password" id="password" name="password" required>
+                <span id="togglePassword" class="password-toggle-icon">👁</span>
+            </div>
+            <div id="passwordError" class="error-message"></div>
+            <button type="submit">Log In</button>
+            <div id="formError" class="error-message"></div>
+            <div class="footer">
+                <a href="forgot-password.html">Forgot Password?</a>
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src = "login.js" nonce="your-nonce"></script>
+</body>
+</html>
