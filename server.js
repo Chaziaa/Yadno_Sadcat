@@ -80,13 +80,12 @@ async function sendResetEmail(email, resetKey) {
         subject: 'Password Reset Request',
         html: `
             <p>You requested a password reset.</p>
-            <p>Click the link below to reset your password:</p>
-            <a href="${resetUrl}">${resetUrl}</a>
+            <p>Here is your reset token:</p>
+            <p><strong>${resetKey}</strong></p>
         `,
     };
 
     try {
-        console.log(`Your SendGrid API Key: ${process.env.SENDGRID_API_KEY}`); // Debugging line
         await sgMail.send(msg);
         console.log('Password reset email sent successfully');
     } catch (error) {
