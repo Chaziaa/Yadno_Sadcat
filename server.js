@@ -209,24 +209,38 @@ app.post('/forgot-password', async (req, res) => {
 
 app.post('/reset-password', async (req, res) => {
     const { resetKey, newPassword } = req.body;
+
+    // Validate inputs
+    if (!resetKey || !newPassword) {
+        console.log('Missing resetKey or newPassword in request');
+        return res.status(400).json({ message: 'Reset key and new password are required.' });
+    }
+
     if (!isValidPassword(newPassword)) {
+        console.log('Password does not meet complexity requirements:', newPassword);
         return res.status(400).json({ message: 'Password does not meet complexity requirements.' });
     }
 
     try {
-        const user = await User.findOne({ resetKey });
-        if (!user) return res.status(400).json({ message: 'Invalid or expired reset key.' });
+        console.log('Received reset request with key:', resetKey);
+        const user = await User.findOne({ resetKey, resetExpires: { $gt: new Date() } });
 
-        const new_Password = bcrypt.hash(newPassword)
-        
-        await User.updateOne(
-            {_id: user._id},
-            {$set: {password: new_Password, resetToken: null, resetExpirese: null}}
-        )
+        if (!user) {
+            console.log('Invalid or expired reset key:', resetKey);
+            return res.status(400).json({ message: 'Invalid or expired reset key.' });
+        }
 
-        res.status(200).json({ success: true, message: 'Password reset successfully.' });
+        // Hash the new password and save the user
+        user.password = await bcrypt.hash(newPassword, 10);
+        user.resetKey = null;
+        user.resetExpires = null;
+        await user.save();
+
+        console.log(`Password reset successfully for user: ${user.email}`);
+        res.status(200).json({ message: 'Password reset successfully.' });
     } catch (error) {
-        res.status(500).json({success: false, message: 'Error resetting password.' });
+        console.error('Error resetting password:', error.message);
+        res.status(500).json({ success: false, message: 'Error resetting password.', error: error.message });
     }
 });
 
