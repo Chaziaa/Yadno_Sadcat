@@ -56,7 +56,7 @@ const userSchema = new mongoose.Schema({
     accountLockedUntil: Date,
     lastLoginTime: Date,
 });
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('users', userSchema);
 
 // Utility Functions
 function generateRandomString(length) {
