@@ -23,10 +23,10 @@
                 const result = await response.text();
 
                 if (response.ok) {
-                    alert(result.message);  // Show success message in alert
+                    alert(result);  // Show success message in alert
                     window.location.href = '/login.html';  // Redirect to login page after success
                 } else {
-                    alert(result.message);  // Show error message in alert
+                    alert(result);  // Show error message in alert
                 }
             } catch (error) {
                 alert('An error occurred while resetting the password. Please try again.');
