@@ -56,7 +56,7 @@ const userSchema = new mongoose.Schema({
     accountLockedUntil: Date,
     lastLoginTime: Date,
 });
-const User = mongoose.model('users', userSchema);
+const User = mongoose.model('User', userSchema);
 
 // Utility Functions
 function generateRandomString(length) {
@@ -223,9 +223,9 @@ app.post('/reset-password', async (req, res) => {
             {$set: {password: new_Password, resetToken: null, resetExpirese: null}}
         )
 
-        res.status(200).json({ message: 'Password reset successfully.' });
+        res.status(200).json({ success: true, message: 'Password reset successfully.' });
     } catch (error) {
-        res.status(500).json({ message: 'Error resetting password.' });
+        res.status(500).json({success: false, message: 'Error resetting password.' });
     }
 });
 
