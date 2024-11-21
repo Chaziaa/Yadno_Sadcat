@@ -216,10 +216,12 @@ app.post('/reset-password', async (req, res) => {
         const user = await User.findOne({ resetKey });
         if (!user) return res.status(400).json({ message: 'Invalid or expired reset key.' });
 
-        user.password = await bcrypt.hash(newPassword, 10);
-        user.resetKey = null;
-        user.resetExpires = null;
-        await user.save();
+        const new_Password = bcrypt.hash(newPassword)
+        
+        await User.updateOne(
+            {_id: user._id},
+            {$set: {password: new_Password, resetToken: null, resetExpirese: null}}
+        )
 
         res.status(200).json({ message: 'Password reset successfully.' });
     } catch (error) {
