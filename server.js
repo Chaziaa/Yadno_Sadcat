@@ -43,7 +43,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const tokenSchema = new mongoose.Schema({
     email: { type: String, required: true },
     token: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now, expires: 3600 }, // 1-hour expiry
+    createdAt: { type: Date, default: Date.now, expires: 360000 }, // 1-hour expiry
 });
 const Token = mongoose.model('Token', tokenSchema);
 
@@ -73,6 +73,7 @@ function isValidPassword(password) {
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function sendResetEmail(email, resetKey) {
+    const resetUrl = `/reset-password?token=${resetKey}`;
     const msg = {
         to: email,
         from: 'sadcatjanine99@gmail.com',
@@ -195,7 +196,7 @@ app.post('/forgot-password', async (req, res) => {
 
         const resetKey = generateRandomString(32);
         user.resetKey = resetKey;
-        user.resetExpires = new Date(Date.now() + 3600 * 1000); // 1-hour expiry
+        user.resetExpires = new Date(Date.now() + 360000 * 1000); // 1-hour expiry
         await user.save();
 
         await sendResetEmail(email, resetKey);
