@@ -210,6 +210,9 @@ app.post('/forgot-password', async (req, res) => {
 app.post('/reset-password', async (req, res) => {
     const { resetKey, newPassword } = req.body;
 
+    // Log the incoming payload for debugging
+    console.log('Received reset-password request:', { resetKey, newPassword });
+
     // Validate inputs
     if (!resetKey || !newPassword) {
         console.log('Missing resetKey or newPassword in request');
@@ -222,7 +225,7 @@ app.post('/reset-password', async (req, res) => {
     }
 
     try {
-        console.log('Received reset request with key:', resetKey);
+        console.log('Validating reset key:', resetKey);
         const user = await User.findOne({ resetKey, resetExpires: { $gt: new Date() } });
 
         if (!user) {
