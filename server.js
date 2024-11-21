@@ -73,7 +73,6 @@ function isValidPassword(password) {
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function sendResetEmail(email, resetKey) {
-    const resetUrl = `http://localhost:3001/reset-password?token=${resetKey}`;
     const msg = {
         to: email,
         from: 'sadcatjanine99@gmail.com',
