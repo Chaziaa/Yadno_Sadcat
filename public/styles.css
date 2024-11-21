@@ -18,8 +18,10 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
     padding: 40px;
     width: 350px;
+    max-width: 100%;
     border: 1px solid #e0e0e0; /* Light border */
     transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 /* Form container hover effect */
@@ -47,7 +49,9 @@ label {
 }
 
 /* Input styles */
-input[type="email"] {
+input[type="email"],
+input[type="password"],
+input[type="text"] {
     width: 100%;
     padding: 14px;
     margin-bottom: 20px;
@@ -60,7 +64,11 @@ input[type="email"] {
 
 /* Input hover and focus styles */
 input[type="email"]:hover,
-input[type="email"]:focus {
+input[type="email"]:focus,
+input[type="password"]:hover,
+input[type="password"]:focus,
+input[type="text"]:hover,
+input[type="text"]:focus {
     background: linear-gradient(135deg, #e8f2e1, #ffffff); /* Lighter green on hover/focus */
     border: 2px solid #006747; /* Starbucks Green border on focus */
     outline: none; /* Remove default outline */
@@ -110,6 +118,7 @@ button:active {
 .form-message.success {
     color: #4CAF50; /* Green for success message */
 }
+
 /* Styling for the "Go Back Home" link */
 a.back-home {
     display: inline-block;
@@ -149,7 +158,9 @@ a.back-home:active {
         font-size: 24px; /* Adjust heading size */
     }
 
-    input[type="email"] {
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
         font-size: 14px; /* Smaller font size on mobile */
     }
 
